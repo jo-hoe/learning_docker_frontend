@@ -1,0 +1,13 @@
+version: '3'
+services:
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        ports:
+            - "8080:3000"
+        volumes:                # all files and folder are mounted besides node_modules
+            - /app/node_modules # <- excluded/backlist this folder
+            - .:/app            # <- copy all folders
+        stdin_open: true        # is set to prevent the react app form exiting immediately after starting
+                                # see https://github.com/facebook/create-react-app/issues/8688
