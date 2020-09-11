@@ -15,6 +15,9 @@ RUN npm run build
 # 2. Run Phase
 # Get only build
 FROM nginx
+# Does nothing in local deployment but will 
+# be interpreted by deployment services
+EXPOSE 80
 # reference alias and copy build app into 
 # static hosting folder of nginx
 COPY --from=builder /app/build /usr/share/nginx/html
